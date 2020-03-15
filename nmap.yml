@@ -1,0 +1,120 @@
+---
+name: nmap
+description: Network exploration tool and security/port scanner
+os: Linux
+ptf_module: modules/vulnerability-analysis/nmap
+---
+commands:
+  - "Scan a List of Targets":
+    - type: ["bash","standalone"]
+    - text: "nmap -iL {FILE}"
+    - input: ["target list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a Specified Port":
+    - type: ["bash","standalone"]
+    - text: "nmap -p {INT} {IPV4}"
+    - input: ["target TCP port number","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TCP SYN Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -sS {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TCP Connect Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -sT {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "UDP Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -sU {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "OS Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -O {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Service Version Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -sV {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Firewall Detection Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -sA {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Firewall Protection Detection Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -PN {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Fast Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -F {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "NSE Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap --script={STR} {IPV4}"
+    - input: ["NSE script name","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "ICMP Sweep":
+    - type: ["bash","standalone"]
+    - text: "nmap -sn {IPV4} -oG {FILE}"
+    - input: ["target IPv4 address","grepable output file"]
+    - output: ["STDOUT",{"FILE":{"input":2}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Output Scan Results to All File Formats":
+    - type: ["bash","standalone"]
+    - text: "nmap {IPV4} -oA {STR}"
+    - input: ["target IPv4 address","outfile file prefix"]
+    - output: ["STDOUT",{"FILE":{"prefix":[2,[".gnmap",".nmap",".xml"]]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "SNMP Bruteforce Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap {IPV4} -Pn -sU -p 161 --script=snmp-brute"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "SNMP Interfaces Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap {IPV4} -Pn -sU -p 161 --script=snmp-interfaces"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Null Sessions Scan":
+    - type: ["bash","standalone"]
+    - text: "nmap -p 139,445 --script smb-enum-users {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

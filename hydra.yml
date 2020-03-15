@@ -1,0 +1,43 @@
+---
+name: THC Hydra
+description: A parallelized login cracker which supports numerous protocols
+os: Linux
+ptf_module: modules/vulnerability-analysis/hydra
+---
+commands:
+  - "SSH Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "hydra -l {STR} -P {FILE} {IPV4} -t {INT} ssh"
+    - input: ["target username","password list file","target IPv4 address","number of threads"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "FTP Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "hydra -t {INT} -V -f -l {STR} -P {FILE} ftp://{IPV4}"
+    - input: ["number of threads","target username","password list file","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "RDP Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "hydra -t {INT} -V -f -l {STR} -P {FILE} rdp://{IPV4}"
+    - input: ["number of threads","target username","password list file","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "MySQL Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "hydra -t {INT} -V -f -l {STR} -e ns -P {FILE} {IPV4}"
+    - input: ["number of threads","target username","password list file","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "HTTP Webpage Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "hydra -l {STR} -P {FILE} {DOMAIN} http-post-form \"{STR}\""
+    - input: ["target username","password list file","target domain","target URL w/ ^USER^ and ^PASS^ placeholders"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

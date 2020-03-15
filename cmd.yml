@@ -1,0 +1,36 @@
+---
+name: cmd
+description: The Windows command interpreter
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Current Username":
+    - type: ["cmd","standalone"]
+    - text: "echo %username%"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check Recetly Modified Files":
+    - type: ["cmd","standalone"]
+    - text: "dir /a/o-d/p %SystemRoot%System32"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "General Password Search (via dir)":
+    - type: ["cmd","standalone"]
+    - text: "dir /s *pass* == *cred* == *vnc* == *.config*"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "General Password Search (via findstr)":
+    - type: ["cmd","standalone"]
+    - text: "findstr /spin \"password\" *.*"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

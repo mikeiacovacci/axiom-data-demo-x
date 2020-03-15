@@ -1,0 +1,15 @@
+---
+name: recon-ng
+description: Web Reconnaissance framework
+os: Linux
+ptf_module: modules/intelligence-gathering/recon-ng
+---
+commands:
+  - "Run recon-ng":
+    - type: ["bash","interactive"]
+    - text: "recon-ng"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"recon-ng"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

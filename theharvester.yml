@@ -1,0 +1,15 @@
+---
+name: theHarvester
+description: Recon tool by Christian Martorella, Edge-Security (cmartorella@edge-security.com)
+os: Linux
+ptf_module: modules/intelligence-gathering/theHarvester
+---
+commands:
+  - "Find Publicly Available Info":
+    - type: ["bash","standalone"]
+    - text: "theHarvester -d {DOMAIN} -b {STRMENU} -f {FILE}"
+    - input: ["target domain",{"data source":["baidu","bing","bingapi","censys","crtsh","cymon","dnsdumpster","dogpile","duckduckgo","google","google-certificates","hunter","intelx","linkedin","netcraft","securityTrails","threatcrowd","trello","twitter","vhost","virustotal","yahoo","all"]},"HTML output file"]
+    - output: [{"FILE":{"input":3}},{"FILE":{"prefix":[3,".xml"]}},{"FILE":{"string":"report.html"}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

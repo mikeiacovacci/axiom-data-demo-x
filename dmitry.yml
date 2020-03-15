@@ -1,0 +1,29 @@
+---
+name: dmitry
+description: Deepmagic Information Gathering Tool
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Find Domain Info":
+    - type: ["bash","standalone"]
+    - text: "dmitry -winseo {FILE} {DOMAIN}"
+    - input: ["output text file","target domain"]
+    - output: [{"FILE":{"input":1}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Basic Port Scan":
+    - type: ["bash","standalone"]
+    - text: "dmitry -pfbo {FILE} {DOMAIN}"
+    - input: ["output file","target domain"]
+    - output: [{"FILE":{"input":1}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Domain Lookup":
+    - type: ["bash","standalone"]
+    - text: "dmitry -winsep {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

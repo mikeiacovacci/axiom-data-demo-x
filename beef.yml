@@ -1,0 +1,22 @@
+---
+name: BeEF
+description: Browser Exploitation Framework
+os: Linux
+ptf_module: modules/exploitation/beef
+---
+commands:
+  - "Launch BeEF":
+    - type: ["bash","standalone"]
+    - text: "beef-xss"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Stop BeEF":
+    - type: ["bash","standalone"]
+    - text: "service beef-xss stop"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

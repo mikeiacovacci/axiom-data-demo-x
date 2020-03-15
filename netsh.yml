@@ -1,0 +1,50 @@
+---
+name: netsh
+description: Display or modify the network configuration of a local or remote Windows computer
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Show Firewall State":
+    - type: ["cmd","standalone"]
+    - text: "netsh firewall show state"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Show Firewall Config":
+    - type: ["cmd","standalone"]
+    - text: "netsh firewall show config"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Start Collecting Traffic":
+    - type: ["cmd","standalone"]
+    - text: "netsh trace start {STR}.etl"
+    - input: ["output filename prefix"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,".etl"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Stop Collecting Traffic":
+    - type: ["cmd","standalone"]
+    - text: "netsh trace stop"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Basic Scan":
+    - type: ["cmd","standalone"]
+    - text: "netsh trace start persistent=yes capture=yes tracefile={FULLPATH}"
+    - input: ["full path to .etl output capture file"]
+    - output: ["STDOUT",{"FILE":{"input":1}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Using a Scenario":
+    - type: ["cmd","standalone"]
+    - text: "netsh trace scenario=NetConnection capture=yes report=yes traceFile={FULLPATH}"
+    - input: ["full path to .etl output capture file"]
+    - output: ["STDOUT",{"FILE":{"input":1}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

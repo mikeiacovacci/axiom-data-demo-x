@@ -1,0 +1,57 @@
+---
+name: hping3
+description: Send (almost) arbitrary TCP/IP packets to network hosts
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Testing ICMP":
+    - type: ["bash","standalone"]
+    - text: "hping3 -1 {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "ICMP Traceroute":
+    - type: ["bash","standalone"]
+    - text: "hping3 --traceroute -V -1 {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check a Specific TCP Port":
+    - type: ["bash","standalone"]
+    - text: "hping3 -V -S -p {INT} -s {INT} {DOMAIN}"
+    - input: ["destination TCP port","base source TCP port","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Traceroute to a Specific TCP Port":
+    - type: ["bash","standalone"]
+    - text: "hping3 --traceroute -V -S -p {INT} -s {INT} {DOMAIN}"
+    - input: ["destination TCP port","base source TCP port","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Xmas Scan":
+    - type: ["bash","standalone"]
+    - text: "hping3 -c 1 -V -p {INT} -s {INT} -M 0 -UPF {DOMAIN}"
+    - input: ["destination TCP port","base source TCP port","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Smurf Attack":
+    - type: ["bash","standalone"]
+    - text: "hping3 -1 --flood -a {IPV4} {DOMAIN}"
+    - input: ["spoofed source IPv4 address","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "DoS Land Attack":
+    - type: ["bash","standalone"]
+    - text: "hping3 -V -c 1000000 -d 120 -S -w 64 -p {INT} -s {INT} --flood --rand-source {DOMAIN}"
+    - input: ["destination TCP port","base source TCP port","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

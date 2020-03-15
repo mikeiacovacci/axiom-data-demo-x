@@ -1,0 +1,36 @@
+---
+name: onesixtyone
+description:
+os: Linux
+ptf_module: modules/intelligence-gathering/onesixtyone
+---
+commands:
+  - "Single Target":
+    - type: ["bash","standalone"]
+    - text: "onesixtyone -c {FILE} {IPV4}"
+    - input: ["community name list file","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Multiple Targets":
+    - type: ["bash","standalone"]
+    - text: "onesixtyone -c {FILE} -i {FILE}"
+    - input: ["community name list file","target list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Output":
+    - type: ["bash","standalone"]
+    - text: "onesixtyone -c {FILE} {IPV4} -o {FILE}"
+    - input: ["community name list file","target IPv4 address","output log file"]
+    - output: [{"FILE":{"input":3}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Added Delay":
+    - type: ["bash","standalone"]
+    - text: "onesixtyone -c {FILE} {IPV4} -w 100"
+    - input: ["community name list file","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

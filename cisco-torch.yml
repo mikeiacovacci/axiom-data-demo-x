@@ -1,0 +1,36 @@
+---
+name: cisco-torch
+description: A mass scanning, fingerprinting, and exploitation tool for Cisco targets
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Run All Scans":
+    - type: ["bash","standalone"]
+    - text: "cisco-torch -A {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "SSH Server Scan + Password Guessing Attack":
+    - type: ["bash","standalone"]
+    - text: "cisco-torch -s -b {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Web Server Scan + IOS HTTP Authorization Vulnerability Scan":
+    - type: ["bash","standalone"]
+    - text: "cisco-torch -w -z {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TFTP Fingerprinting + TFTP File Download":
+    - type: ["bash","standalone"]
+    - text: "cisco-torch -j -b {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

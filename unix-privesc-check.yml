@@ -1,0 +1,22 @@
+---
+name: unix-privesc-check
+description: Checks file permissions and other settings that could allow local users to escalate privileges
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Standard Check":
+    - type: ["bash","standalone"]
+    - text: "unix-privesc-check standard"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Detailed Check":
+    - type: ["bash","standalone"]
+    - text: "unix-privesc-check detailed"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

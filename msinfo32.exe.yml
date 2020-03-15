@@ -1,0 +1,15 @@
+---
+name: msinfo32.exe
+description:
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch msinfo32.exe":
+    - type: ["cmd","standalone"]
+    - text: "msinfo32.exe"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

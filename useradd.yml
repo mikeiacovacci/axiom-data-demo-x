@@ -1,0 +1,15 @@
+---
+name: useradd
+description: Creates a new user or update default new user information
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Create a User Without a Password":
+    - type: ["bash","standalone"]
+    - text: "useradd {STR}"
+    - input: ["new username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

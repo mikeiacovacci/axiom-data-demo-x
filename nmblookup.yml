@@ -1,0 +1,15 @@
+---
+name: nmblookup
+description: NetBIOS over TCP/IP client used to lookup NetBIOS names
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "nmblookup -A {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

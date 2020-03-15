@@ -1,0 +1,15 @@
+---
+name: chpasswd
+description: Updates passwords in batch mode
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Create a User With a Password":
+    - type: ["bash","autonomous"]
+    - text: "echo {STR}:{STR} | chpasswd"
+    - input: ["new username","new user's password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

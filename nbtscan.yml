@@ -1,0 +1,43 @@
+---
+name: nbtscan
+description: A program for scanning networks for NetBIOS name information
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Scan a Single Target":
+    - type: ["bash","standalone"]
+    - text: "nbtscan {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a Network":
+    - type: ["bash","standalone"]
+    - text: "nbtscan -r {IPV4CIDR}"
+    - input: ["target IPv4 network, CIDR"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a Network (verbose output)":
+    - type: ["bash","standalone"]
+    - text: "nbtscan -v {IPV4CIDR}"
+    - input: ["target IPv4 network, CIDR"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a Host (colon-delimited output)":
+    - type: ["bash","standalone"]
+    - text: "nbtscan -v -s : {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a List of IP Addresses":
+    - type: ["bash","standalone"]
+    - text: "nbtscan -f {FILE}"
+    - input: ["target list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

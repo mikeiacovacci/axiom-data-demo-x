@@ -1,0 +1,15 @@
+---
+name: hostname
+description: Prints the name of the current host
+os: Windows
+ptf_module: null
+---
+commands:
+  - "System Information":
+    - type: ["cmd","standalone"]
+    - text: "hostname"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

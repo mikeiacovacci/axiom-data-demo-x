@@ -1,0 +1,15 @@
+---
+name: dnsrecon
+description: A DNS enumeration tool by Carlos Parez
+os: Linux
+ptf_module: modules/intelligence-gathering/dnsrecon
+---
+commands:
+  - "DNS Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "dnsrecon -d {DOMAIN} -D {FILE} -t std --xml {FILE}"
+    - input: ["target domain","dictionary file","XML output file"]
+    - output: [{"FILE":{"input":3}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

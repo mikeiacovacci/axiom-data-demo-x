@@ -1,0 +1,51 @@
+---
+name: nping
+description: Network packet generation tool/ping utility
+os: Linux
+ptf_module: modules/vulnerability-analysis/nmap
+---
+commands:
+  - "Basic Usage":
+    - type: ["bash","standalone"]
+    - text: "nping {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TCP Connect Scan":
+    - type: ["bash","standalone"]
+    - text: "nping --tcp-connect {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TCP Connect Scan with Port Range":
+    - type: ["bash","standalone"]
+    - text: "nping --tcp-connect {IPV4} -p{INTRANGE}"
+    - input: ["target IPv4 address","TCP port number range"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "UDP Scan":
+    - type: ["bash","standalone"]
+    - text: "nping --udp {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "ARP Scan":
+    - type: ["bash","standalone"]
+    - text: "nping --arp {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Send Random Data of Specified Length":
+    - type: ["bash","standalone"]
+    - text: "nping {IPV4} --data-length {INT}"
+    - input: ["target IPv4 address","length of random data (bytes)"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+
+...

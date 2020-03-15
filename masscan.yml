@@ -1,0 +1,22 @@
+---
+name: masscan
+description: a quick TCP/SYN port scanner
+os: Linux
+ptf_module: modules/intelligence-gathering/masscan
+---
+commands:
+  - "Scan a Network for Web Ports":
+    - type: ["bash","standalone"]
+    - text: "masscan {IPV4CIDR} -p80,443,8080"
+    - input: ["target network range, IPv4 CIDR"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan All TCP Ports":
+    - type: ["bash","standalone"]
+    - text: "masscan {IPV4} -p0-65535"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

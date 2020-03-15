@@ -1,0 +1,15 @@
+---
+name: eventvwr
+description: Windows Event Viewer for Microsoft Management Console (MMC)
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch eventvwr":
+    - type: ["cmd","standalone"]
+    - text: "eventvwr"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

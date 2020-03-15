@@ -1,0 +1,15 @@
+---
+name: sudo
+description: Allows a permitted user to execute a command as the superuser or another user
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Current User's sudo Privileges":
+    - type: ["bash","standalone"]
+    - text: "sudo -l"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

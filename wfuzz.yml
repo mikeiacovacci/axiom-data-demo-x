@@ -1,0 +1,36 @@
+---
+name: wfuzz
+description: A web application bruteforcer
+os: Linux
+ptf_module: modules/vulnerability-analysis/wfuzz
+---
+commands:
+  - "Directory Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "wfuzz -w wordlist/general/common.txt {WEBURL}/FUZZ"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Search for Common PHP Files":
+    - type: ["bash","standalone"]
+    - text: "wfuzz -w wordlist/general/common.txt {WEBURL}/FUZZ.php"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Fuzz URL Parameter":
+    - type: ["bash","standalone"]
+    - text: "wfuzz -z range,0-10 --hl 97 {WEBURL}=FUZZ"
+    - input: ["target URL, including target parameter"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Fuzz URL Parameter Using Wordlist File":
+    - type: ["bash","standalone"]
+    - text: "wfuzz -c -v -z file,{FULLPATH} --hc 404 \"{WEBURL}=FUZZ\""
+    - input: ["full file path","target URL, including target parameter"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

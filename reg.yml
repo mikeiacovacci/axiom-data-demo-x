@@ -1,0 +1,54 @@
+---
+name: reg
+description: Performs operations on registry subkey information and values in registry entries
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Backup the System and SAM Registry Hives":
+    - type: ["cmd","standalone"]
+    - text:
+      - "reg save HKLM\\SYSTEM {STR}.hiv"
+      - "reg save HKLM\\SAM {STR}.hiv"
+    - input: ["system backup registry hive filename prefix","SAM backup registry hive filename prefix"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,".hiv"]}},{"FILE":{"prefix":[2,".hiv"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate VNC Passwords (via reg query)":
+    - type: ["cmd","standalone"]
+    - text: "reg query \"HKCU\\Software\\ORL\\WinVNC3\\Password\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate Windows Autologin Passwords (via reg query)":
+    - type: ["cmd","standalone"]
+    - text: "reg query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\Currentversion\\Winlogon\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate SNMP Passwords (via reg query)":
+    - type: ["cmd","standalone"]
+    - text: "reg query \"HKLM\\SYSTEM\\Current\\ControlSet\\Services\\SNMP\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Locate Putty Passwords (via reg query)":
+    - type: ["cmd","standalone"]
+    - text: "reg query \"HKCU\\Software\\SimonTatham\\PuTTY\\Sessions\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "General Password Search (via reg query)":
+    - type: ["cmd","standalone"]
+    - text:
+      - "reg query HKLM /f password /t REG_SZ /s"
+      - "reg query HKCU /f password /t REG_SZ /s"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

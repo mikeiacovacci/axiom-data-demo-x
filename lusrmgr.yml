@@ -1,0 +1,15 @@
+---
+name: lusrmgr
+description: Local users and groups manager for Microsoft Management Console (MMC)
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch lusrmgr":
+    - type: ["cmd","standalone"]
+    - text: "lusrmgr"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

@@ -1,0 +1,15 @@
+---
+name: unshadow
+description: Combines passwd and shadow files
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Unshadow Linux Hashes for Cracking":
+    - type: ["bash","standalone"]
+    - text: "unshadow {FILE} {FILE}"
+    - input: ["input passwd file","input shadow file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

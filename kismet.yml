@@ -1,0 +1,15 @@
+---
+name: kismet
+description: Wireless sniffing and monitoring tool
+os: Linux
+ptf_module: modules/wireless/kismet
+---
+commands:
+  - "Start with a Monitor-Mode Interface":
+    - type: ["bash","standalone"]
+    - text: "mismet -c {STR}"
+    - input: ["monitor-mode interface name (AKA capture source)"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

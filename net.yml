@@ -1,0 +1,99 @@
+---
+name: net
+description: Manage network resources and perform operations on groups, users, account policies, shares, etc.
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Connect to a Share via Null Session":
+    - type: ["cmd","standalone"]
+    - text: "net use \\\\{IPV4}\\\\{STR} \"\" /user:\"\""
+    - input: ["target IPv4 address","share name",]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Access a Share":
+    - type: ["cmd","standalone"]
+    - text: "net view \\\\{IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Connect to Admin Share with Username and Password":
+    - type: ["cmd","standalone"]
+    - text: "net use \\\\{IPV4}\\admin$ \"{STR}\" /user:\"{STR}\""
+    - input: ["target IPv4 address","password","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Copy a File to a Remote Computer":
+    - type: ["cmd","standalone"]
+    - text: "copy {FILE} \\\\{IPV4}\\{STR}\\"
+    - input: ["file to copy","target IPv4 address","target share name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Network Connections (net session)":
+    - type: ["cmd","standalone"]
+    - text: "net session"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Network Connections (net use)":
+    - type: ["cmd","standalone"]
+    - text: "net use"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Local Users and Groups":
+    - type: ["cmd","standalone"]
+    - text: "net users"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Local Administrator Users":
+    - type: ["cmd","standalone"]
+    - text: "net localgroup administrators"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Users in Domain Administrators Group":
+    - type: ["cmd","standalone"]
+    - text: "net group administrators"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Domain Groups":
+    - type: ["cmd","standalone"]
+    - text: "net group /{STR}"
+    - input: ["Active Directory domain name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Create a New User":
+    - type: ["cmd","standalone"]
+    - text: "net user {STR} {STR} /ADD"
+    - input: ["new user name","password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Add a User to a Local Group":
+    - type: ["cmd","standalone"]
+    - text: "net localgroup {STR} {STR} /add"
+    - input: ["group name","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Add a User to a Domain Group":
+    - type: ["cmd","standalone"]
+    - text: "net localgroup {STR} {STR}\\{STR} /add"
+    - input: ["group name","target Active Directory domain","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

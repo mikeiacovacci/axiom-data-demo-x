@@ -1,0 +1,50 @@
+---
+name: skipfish
+description: Web application security scanner
+os: Linux
+ptf_module: modules/vulnerability-analysis/skipfish
+---
+commands:
+  - "Quick Scan":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} {WEBURL}"
+    - input: ["output directory (no trailing slash)","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Extensive Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} -S {FILE} {WEBURL}"
+    - input: ["output directory (no trailing slash)","wordlist file","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Without Bruteforcing":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} -LY {WEBURL}"
+    - input: ["output directory (no trailing slash)","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Authenticated Scan":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} -A {STR}:{STR} {WEBURL}"
+    - input: ["output directory (no trailing slash)","username","password","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Authentication Cookie":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} -C jsession=cookieinfo -X /logout {WEBURL}"
+    - input: ["output directory (no trailing slash)","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a Flaky Server":
+    - type: ["bash","standalone"]
+    - text: "skipfish -o {RLATVPTH} -l 5 -g 2 -t 30 -i 15 {WEBURL}"
+    - input: ["output directory (no trailing slash)","target URL"]
+    - output: ["STDOUT",{"FILE":{"prefix":[1,"/index.html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

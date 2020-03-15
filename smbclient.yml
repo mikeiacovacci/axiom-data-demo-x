@@ -1,0 +1,22 @@
+---
+name: smbclient
+description: An ftp-like client to access SMB/CIFS resources on servers
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Fingerprint SMB Version":
+    - type: ["bash","standalone"]
+    - text: "smbclient -L {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Exit smbclient":
+    - type: ["smbclient","interactive"]
+    - text: "exit"
+    - input: null
+    - output: [{"PROMPT":"bash"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

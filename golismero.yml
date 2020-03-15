@@ -1,0 +1,29 @@
+---
+name: golismero
+description: Open source security testing framework geared toward web security
+os: Linux
+ptf_module: modules/vulnerability-analysis/golismero
+---
+commands:
+  - "Scan a Website":
+    - type: ["bash","standalone"]
+    - text: "golismero scan {WEBURL}"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan from nmap Target List + Output to HTML File":
+    - type: ["bash","standalone"]
+    - text: "golismero scan -i {FILE} -o {FILE}.html"
+    - input: ["input nmap report file","output HTML filename prefix"]
+    - output: [{"FILE":{"prefix":[2,".html"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Dump the Database from a Previous Scan":
+    - type: ["bash","standalone"]
+    - text: "golismero dump -db {FILE} -o {FILE}.sql"
+    - input: ["input database file","output SQL filename prefix"]
+    - output: [{"FILE":{"prefix":[2,".sql"]}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

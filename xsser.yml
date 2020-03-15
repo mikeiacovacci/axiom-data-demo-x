@@ -1,0 +1,43 @@
+---
+name: XSSer
+description: An automated framework to detect, exploit, and report XSS vulnerabilities in web-based applications
+os: Linux
+ptf_module: null
+---
+commands:
+  - "In-depth Test":
+    - type: ["bash","standalone"]
+    - text: "xsser -all=\"{WEBURL}\""
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Simple XSS Test":
+    - type: ["bash","standalone"]
+    - text: "xsser -u \"{WEBURL}\""
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Use the Crawler":
+    - type: ["bash","standalone"]
+    - text: "xsser -c {INT} -u \"{WEBURL}\""
+    - input: ["crawler recursion depth","target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Test URL Parameters":
+    - type: ["bash","standalone"]
+    - text: "xsser -u \"{WEBURL}\" -g \"{STR}\" --auto"
+    - input: ["target URL without parameters","URL parameter string"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Manual Payload":
+    - type: ["bash","standalone"]
+    - text: "xsser -u \"{WEBURL}\" -g \"{STR}\" \\ --payload \"{STR}\""
+    - input: ["target URL without parameters","URL parameter string","payload string"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

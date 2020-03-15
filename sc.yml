@@ -1,0 +1,22 @@
+---
+name: sc
+description: Communicates with the Windows Service Control Manager and Windows services
+os: Windows
+ptf_module: null
+---
+commands:
+  - "List All Services":
+    - type: ["cmd","standalone"]
+    - text: "sc query"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query a Specific Service":
+    - type: ["cmd","standalone"]
+    - text: "sc qc {STR}"
+    - input: ["target service name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

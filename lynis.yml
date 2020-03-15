@@ -1,0 +1,15 @@
+---
+name: lynis
+description: System security (boot loader, software packages, logging, etc.) auditing for Unix, Linux, and macOS hosts
+os: Linux
+ptf_module: modules/vulnerability-analysis/lynis
+---
+commands:
+  - "Local System Audit":
+    - type: ["bash","standalone"]
+    - text: "lynis audit system"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

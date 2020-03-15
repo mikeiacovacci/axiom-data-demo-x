@@ -1,0 +1,43 @@
+---
+name: medusa
+description: Parallel network login auditor
+os: Linux
+ptf_module: modules/vulnerability-analysis/medusa
+---
+commands:
+  - "Display Available Plugins":
+    - type: ["bash","standalone"]
+    - text: "medusa -d"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Webpage Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "medusa -h {IPV4} -u {STR} -P {FILE} -M HTTP"
+    - input: ["target IPv4 address","target username","password list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "SMB Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "medusa -h {IPV4} -u {STR} -P {FILE} -e ns -M smbnt"
+    - input: ["target IPv4 address","target username","password list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "POP3 Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "medusa -h {IPV4} -U {FILE} -P {FILE} -t {INT} -L -M POP3"
+    - input: ["target IPv4 address","username list file","password list file","maximum concurrent login attempts"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "FTP Bruteforce":
+    - type: ["bash","standalone"]
+    - text: "medusa -h {IPV4} -U {FILE} -P {FILE} -M ftp"
+    - input: ["target IPv4 address","username list file","password list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

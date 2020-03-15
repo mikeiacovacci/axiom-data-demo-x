@@ -1,0 +1,160 @@
+---
+name: Metasploit Framework
+description: A penetration testing platform for finding, validating, and exploiting vulnerabilities
+os: Linux
+ptf_module: modules/exploitation/metasploit
+---
+commands:
+  - "Database Setup":
+    - type: ["bash","autonomous"]
+    - text: "service postgresql start && msfdb init && msfdb start"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Reinitialize the Database":
+    - type: ["bash","standalone"]
+    - text: "msfdb reinit"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Launch msfconsole":
+    - type: ["bash","interactive"]
+    - text: "msfconsole"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check Database Connection Status":
+    - type: ["msfconsole","interactive"]
+    - text: "db_status"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check Current Workspace":
+    - type: ["msfconsole","interactive"]
+    - text: "workspace"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Create and Change to a New Workspace":
+    - type: ["msfconsole","interactive"]
+    - text: "workspace -a {STR}"
+    - input: ["workspace name"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Change Workspaces":
+    - type: ["msfconsole","interactive"]
+    - text: "workspace {STR}"
+    - input: ["workspace name"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Delete a Workspace":
+    - type: ["msfconsole","interactive"]
+    - text: "workspace -d {STR}"
+    - input: ["workspace name"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "db_nmap Scan":
+    - type: ["msfconsole","interactive"]
+    - text: "db_nmap {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Hosts in Database":
+    - type: ["msfconsole","interactive"]
+    - text: "hosts"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Services in Database":
+    - type: ["msfconsole","interactive"]
+    - text: "services"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Discovered Vulnerabilities in Database":
+    - type: ["msfconsole","interactive"]
+    - text: "vulns"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Export Database to XML":
+    - type: ["msfconsole","interactive"]
+    - text: "db_export -f xml {FILE}"
+    - input: ["XML output file"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"},{"FILE":{"input":1}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "SMB SID Lookup Scan":
+    - type: ["msfconsole","interactive"]
+    - text:
+      - "use auxiliary/scanner/smb/smb_lookupsid"
+      - "set rhosts {IPV4}"
+      - "run"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan URL for Directories":
+    - type: ["msfconsole","interactive"]
+    - text:
+      - "use auxiliary/scanner/http/dir_scanner"
+      - "set rhosts {IPV4}"
+      - "set path {STR}"
+      - "run"
+    - input: ["target IPv4 address","target directory"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Sessions":
+    - type: ["msfconsole","interactive"]
+    - text: "sessions"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Interact with a Meterpreter Session":
+    - type: ["msfconsole","interactive"]
+    - text: "sessions -i {STR}"
+    - input: ["session ID"]
+    - output: ["STDOUT",{"PROMPT":"meterpreter"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Exit msfconsole":
+    - type: ["msfconsole","interactive"]
+    - text: "exit -y"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"bash"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Run Multi Handler Listener":
+    - type: ["msfconsole","interactive"]
+    - text:
+      - "use exploit/multi/handler"
+      - "set payload {STR}"
+      - "set lhost {IPV4}"
+      - "set lport {INT}"
+      - "exploit -j"
+    - input: ["Metasploit payload name","local IPv4 address","local port"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Select Local Windows EoP Exploit":
+    - type: ["msfconsole","interactive"]
+    - text: "use /exploit/windows/local/{STR}"
+    - input: ["exploit module name"]
+    - output: ["STDOUT",{"PROMPT":"msfconsole"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

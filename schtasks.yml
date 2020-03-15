@@ -1,0 +1,30 @@
+---
+name: schtasks
+description: Create, delete, query, change, run, and end scheduled tasks on a local or remote Windows system
+os: Windows
+ptf_module: null
+---
+commands:
+  - "List Scheduled Tasks (simplified)":
+    - type: ["cmd","standalone"]
+    - text: "schtasks"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Display All Scheduled Tasks (detailed)":
+    - type: ["cmd","standalone"]
+    - text: "schtasks /query /fo LIST /v"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Schedule a Task":
+    - type: ["cmd","standalone"]
+    - text: "schtasks /create /tn \"{STR}\" /tr {STR} /sc {STRMENU} /mo {INT} {STR} /et {STR} /k"
+    - input: ["task name","command",{"schedule type":["minute","hourly","daily","weekly","monthly"]},"interval in minutes","start time (HH:MM)","end time (HH:MM)"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+
+...

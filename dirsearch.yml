@@ -1,0 +1,22 @@
+---
+name: dirsearch
+description: Web path scanner
+os: Linux
+ptf_module: modules/intelligence-gathering/dirsearch
+---
+commands:
+  - "Basic Scan with Default Wordlist":
+    - type: ["bash","standalone"]
+    - text: "dirsearch -u {WEBURL} -e {STR}"
+    - input: ["target URL","file extension"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Basic Scan with User-supplied Wordlist":
+    - type: ["bash","standalone"]
+    - text: "dirsearch -u {WEBURL} -e {STR} -w {FILE}"
+    - input: ["target URL","file extension","wordlist file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

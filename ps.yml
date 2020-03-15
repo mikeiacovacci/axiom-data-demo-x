@@ -1,0 +1,22 @@
+---
+name: ps
+description: Reports a snapshot of the current processes
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Every Process (BSD syntax)":
+    - type: ["bash","standalone"]
+    - text: "ps aux"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Every Process (standard syntax)":
+    - type: ["bash","standalone"]
+    - text: "ps -ef"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

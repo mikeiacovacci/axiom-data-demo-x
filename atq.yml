@@ -1,0 +1,15 @@
+---
+name: atq
+description: Lists the user's pending jobs or lists everybody's jobs if superuser
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Usage":
+    - type: ["bash","standalone"]
+    - text: "atq"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

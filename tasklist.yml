@@ -1,0 +1,22 @@
+---
+name: tasklist
+description: Displays a list of currently running processes on either a local or remote machine
+os: Windows
+ptf_module: null
+---
+commands:
+  - "List Prorcesses":
+    - type: ["cmd","standalone"]
+    - text: "tasklist"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Services":
+    - type: ["cmd","standalone"]
+    - text: "tasklist /svc"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

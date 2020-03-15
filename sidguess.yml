@@ -1,0 +1,29 @@
+---
+name: SidGuesser
+description:
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "sidguess -i {IPV4} -d {FILE}"
+    - input: ["target IPv4 address","wordlist file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Reporting":
+    - type: ["bash","standalone"]
+    - text: "sidguess -i {IPV4} -d {FILE} -r {FILE}"
+    - input: ["target IPv4 address","wordlist file","output report file"]
+    - output: ["STDOUT",{"FILE":{"input":3}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Specify a Port":
+    - type: ["bash","standalone"]
+    - text: "sidguess -i {IPV4} -d {FILE} -p {INT}"
+    - input: ["target IPv4 address","wordlist file","port number"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

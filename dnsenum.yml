@@ -1,0 +1,36 @@
+---
+name: dnsenum
+description: A DNS scanning tool
+os: Linux
+ptf_module: modules/intelligence-gathering/dnsenum
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "dnsenum {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Full Scan":
+    - type: ["bash","standalone"]
+    - text: "dnsenum -enum {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Find Subdomains (via Google scraping)":
+    - type: ["bash","standalone"]
+    - text: "dnsenum -s 5 -p 5 {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Bruteforce Subdomains":
+    - type: ["bash","standalone"]
+    - text: "dnsenum -enum -r {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

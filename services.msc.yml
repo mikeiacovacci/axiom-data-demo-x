@@ -1,0 +1,15 @@
+---
+name: services.msc
+description: Windows Services for Microsoft Management Console (MMC)
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch Services":
+    - type: ["cmd","standalone"]
+    - text: "services.msc"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

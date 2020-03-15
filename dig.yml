@@ -1,0 +1,57 @@
+---
+name: dig
+description: DNS lookup utility
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Usage":
+    - type: ["bash","standalone"]
+    - text: "dig {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Zone Transfer":
+    - type: ["bash","standalone"]
+    - text: "dig -t axfr {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Display ANSWER SECTION Only":
+    - type: ["bash","standalone"]
+    - text: "dig {DOMAIN} +noall +answer"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query the A Record":
+    - type: ["bash","standalone"]
+    - text: "dig -t A {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query the MX Record":
+    - type: ["bash","standalone"]
+    - text: "dig -t MX {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query the NS Record":
+    - type: ["bash","standalone"]
+    - text: "dig -t NS {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query All Available Records":
+    - type: ["bash","standalone"]
+    - text: "dig -t ANY {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

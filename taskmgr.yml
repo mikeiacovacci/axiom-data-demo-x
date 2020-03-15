@@ -1,0 +1,15 @@
+---
+name: taskmgr
+description: Windows Task Manager
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch Windows Task Manager":
+    - type: ["cmd","standalone"]
+    - text: "taskmgr"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

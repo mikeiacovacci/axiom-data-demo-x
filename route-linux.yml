@@ -1,0 +1,15 @@
+---
+name: route
+description: Show and manipulate the IP routing table
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Show the Routing Table":
+    - type: ["bash","standalone"]
+    - text: "route"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

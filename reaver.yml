@@ -1,0 +1,22 @@
+---
+name: reaver
+description: WiFi Protected Setup (WPS) brute force attack tool
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Attack using Victim's BSSID":
+    - type: ["bash","standalone"]
+    - text: "reaver -i {STR} -b {MAC} -v"
+    - input: ["monitor-mode interface name","target MAC address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Attack using Victim's ESSID":
+    - type: ["bash","standalone"]
+    - text: "reaver -i {STR} -e {STR} -vv"
+    - input: ["monitor-mode interface name","target network name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

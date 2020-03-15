@@ -1,0 +1,22 @@
+---
+name: aircrack-ng
+description: A suite of tools to assess wireless security by monitoring, testing, and attacking/cracking WiFi networks
+os: Linux
+ptf_module: modules/wireless/aircrackng
+---
+commands:
+  - "Place a Wireless Card into Monitor Mode":
+    - type: ["bash","standalone"]
+    - text: "airmon-ng start {STR}"
+    - input: ["wireless interface name"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Disabling a Wireless Card's Monitor Mode":
+    - type: ["bash","standalone"]
+    - text: "airmon-ng stop {STR}"
+    - input: ["wireless interface name"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

@@ -1,0 +1,38 @@
+---
+name: powershell
+description: A task automation and configuration management framework, command-line shell, and scripting language
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Create a User without a Password":
+    - type: ["powershell","standalone"]
+    - text: "New-LocalUser -Name \"{STR}\" -Description \"{STR}\" -NoPassword"
+    - input: ["new user name","account description"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Create a User with a Password":
+    - type: ["powershell","standalone"]
+    - text:
+      - "$Password = Read-Host -AsSecureString New-LocalUser \"{STR}\" -Password $Password -Fullname \"{STR}\" -Description \"{STR}\""
+      - "{STR}"
+    - input: ["new user name","account full name","account description","password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Add a User to a Local Group":
+    - type: ["powershell","standalone"]
+    - text: "Add-LocalGroupMember -Group \"{STR}\" -Member \"{STR}\""
+    - input: ["group name","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Add a User to a Domain Group":
+    - type: ["powershell","standalone"]
+    - text: "Add-ADGroupMember -Identity {STR} -Members {STR}"
+    - input: ["group name","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

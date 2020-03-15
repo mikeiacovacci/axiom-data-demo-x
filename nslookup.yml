@@ -1,0 +1,50 @@
+---
+name: nslookup
+description: Query internet name servers interactively
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Usage":
+    - type: ["bash","standalone"]
+    - text: "nslookup {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check for an A Record":
+    - type: ["bash","standalone"]
+    - text: "nslookup -type=A {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check for an MX Record":
+    - type: ["bash","standalone"]
+    - text: "nslookup -type=MX {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check for a TXT Record":
+    - type: ["bash","standalone"]
+    - text: "nslookup -type=TXT {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Query the Authoritative Server":
+    - type: ["bash","standalone"]
+    - text: "nslookup -type=SOA {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check a Record's Caching Duration":
+    - type: ["bash","standalone"]
+    - text: "nslookup -type={STR} -debug {DOMAIN}"
+    - input: ["DNS record type","target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

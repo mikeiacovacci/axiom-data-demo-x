@@ -1,0 +1,22 @@
+---
+name: oscanner
+description: Oracle assessment framework
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "oscanner -s {IPV4} -P 1040"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Verbose Output":
+    - type: ["bash","standalone"]
+    - text: "oscanner -v -s {IPV4} -P 1040"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

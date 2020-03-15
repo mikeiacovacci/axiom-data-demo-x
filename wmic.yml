@@ -1,0 +1,36 @@
+---
+name: wmic
+description: Displays WMI information inside an interactive command shell
+os: Windows
+ptf_module: null
+---
+commands:
+  - "View Patch Level":
+    - type: ["cmd","standalone"]
+    - text: "wmic qfe get Caption,Description,HotFixID,InstalledOn"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Auto-start Programs":
+    - type: ["cmd","standalone"]
+    - text: "wmic startup get caption,command"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Detailed Prorcess List":
+    - type: ["cmd","standalone"]
+    - text: "wmic process list full"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Detect Unquoted Service Path":
+    - type: ["cmd","autonomous"]
+    - text: "wmic service get name,displayname,pathname,startmode | findstr /i \"auto\" | findstr /i /v \"c:\\windows\\\\\" | findstr /i /v \"\"\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

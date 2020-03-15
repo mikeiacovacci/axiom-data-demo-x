@@ -1,0 +1,15 @@
+---
+name: firewall.cpl
+description: Windows Firewall (via Control Panel)
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch Control Panel (Windows Firewall)":
+    - type: ["cmd","standalone"]
+    - text: "firewall.cpl"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

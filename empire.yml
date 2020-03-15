@@ -1,0 +1,82 @@
+---
+name: empire
+description: Python/PowerShell post-exploitation framework for Windows, macOS, and *nix systems
+os: Linux
+ptf_module: modules/post-exploitation/empire
+---
+commands:
+  - "Launch Empire":
+    - type: ["bash","interactive"]
+    - text: "empire"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Exit Empire":
+    - type: ["empire","interactive"]
+    - text:
+      - "exit"
+      - "y"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"bash"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "List Active Listeners":
+    - type: ["empire","interactive"]
+    - text: "listeners"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Select a Listener":
+    - type: ["empire","interactive"]
+    - text:
+      - "listeners"
+      - "uselistener {STR}"
+    - input: ["listener name"]
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Listener or Stager Info":
+    - type: ["empire","interactive"]
+    - text: "info"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Set Listener or Stager Variable":
+    - type: ["empire","interactive"]
+    - text: "set {STR} {STR}"
+    - input: ["variable name","variable value"]
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Launch Listener or Generate Stager":
+    - type: ["empire","interactive"]
+    - text: "execute"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Set Stager":
+    - type: ["empire","interactive"]
+    - text: "usestager {STR}"
+    - input: ["stager name"]
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Active Agents":
+    - type: ["empire","interactive"]
+    - text: "agents"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Interact with an Agent":
+    - type: ["empire","interactive"]
+    - text: "interact {STR}"
+    - input: ["agent name"]
+    - output: ["STDOUT",{"PROMPT":"empire"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

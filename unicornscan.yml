@@ -1,0 +1,36 @@
+---
+name: unicornscan
+description: Asynchronous network stimulus delivery/response recording tool by Jack Louis (jack@rapturesecurity.org)
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "unicornscan {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "TCP Scan":
+    - type: ["bash","standalone"]
+    - text: "unicornscan -r200 -mT {DOMAIN}:80,443"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "UDP Scan":
+    - type: ["bash","standalone"]
+    - text: "unicornscan -r300 -mU {DOMAIN}"
+    - input: ["target domain"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Spoof Source IP and Output to PCAP":
+    - type: ["bash","standalone"]
+    - text: "unicornscan {DOMAIN} -r500 -w {FILE} -w1 -s {IPV4}"
+    - input: ["target domain","PCAP output file","spoofed source IPv4 address"]
+    - output: ["STDOUT",{"FILE":{"input":2}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

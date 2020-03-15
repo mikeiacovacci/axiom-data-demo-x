@@ -1,0 +1,29 @@
+---
+name: pyrit
+description: Create massive databases of pre-computed WPA/WPA2-PSK authentication phase in a space-time tradeoff
+os: Linux
+ptf_module: modules/password-recovery/pyrit
+---
+commands:
+  - "Scan PCAP for Access Points, Stations, and EAPOL-handshakes":
+    - type: ["bash","standalone"]
+    - text: "pyrit -r {FILE} analyze"
+    - input: ["PCAP input file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Attack_batch":
+    - type: ["bash","standalone"]
+    - text: "pyrit -r {FILE} -e {STR} -b {MAC} \\ -o {FILE} attack_batch"
+    - input: ["PCAP input file","network name","access point BSSID","output file"]
+    - output: [{"FILE":{"input":4}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Attack_cowpatty":
+    - type: ["bash","standalone"]
+    - text: "pyrit -r {FILE} -e {STR} \\ -i {FILE} -o - attack_cowpatty"
+    - input: ["PCAP input file","network name","input cowpatty file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

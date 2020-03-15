@@ -1,0 +1,15 @@
+---
+name: netstat
+description: Prints network connections, routing tables, interface stats, etc.
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Network Connections and Associated Program Names/PIDs":
+    - type: ["bash","standalone"]
+    - text: "netstat -nap"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

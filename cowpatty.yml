@@ -1,0 +1,15 @@
+---
+name: cowpatty
+description: Offline dictionary attack tool for WPA/WPA2 networks using PSK-based authentication
+os: Linux
+ptf_module: modules/password-recovery/cowpatty
+---
+commands:
+  - "Basic Usage":
+    - type: ["bash","standalone"]
+    - text: "cowpatty -d {FILE} -r {FILE} -s \"{STR}\""
+    - input: ["input dictionary file","PCAP input file","network name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

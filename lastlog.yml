@@ -1,0 +1,15 @@
+---
+name: lastlog
+description: reports the most recent login of all users or of a given user
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Most Recent Login for Every User":
+    - type: ["bash","standalone"]
+    - text: "lastlog"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

@@ -1,0 +1,54 @@
+---
+name: rpcclient
+description: Tool for executing client side MS-RPC functions
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Login Using a Null Session":
+    - type: ["bash","interactive"]
+    - text:
+      - "rpcclient -U \"\" {IPV4}"
+      - ""
+    - input: ["target IPv4 address",]
+    - output: [{"PROMPT":"rpcclient"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Login Using a User Account":
+    - type: ["bash","interactive"]
+    - text:
+      - "rpcclient -U {STR} {IPV4}"
+      - "{STR}"
+    - input: ["username","target IPv4 address","password"]
+    - output: [{"PROMPT":"rpcclient"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate OS Info":
+    - type: ["rpcclient","interactive"]
+    - text: "srvinfo"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"rpcclient"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Domain Users":
+    - type: ["rpcclient","interactive"]
+    - text: "enumdomusers"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"rpcclient"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Domain Password Policy Info":
+    - type: ["rpcclient","interactive"]
+    - text: "getdompwinfo"
+    - input: null
+    - output: ["STDOUT",{"PROMPT":"rpcclient"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Exit rpcclient":
+    - type: ["rpcclient","interactive"]
+    - text: "exit"
+    - input: null
+    - output: [{"PROMPT":"bash"}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

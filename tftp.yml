@@ -1,0 +1,15 @@
+---
+name: tftp
+description: Use Trivial File Transfer Protocol to transfer files to and from a remote machine
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Download a File from a Remote Host":
+    - type: ["bash","standalone"]
+    - text: "tftp -i {IPV4} get {FILE}"
+    - input: ["remote host IPv4 address","target file to download"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

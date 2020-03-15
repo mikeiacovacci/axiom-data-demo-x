@@ -1,0 +1,22 @@
+---
+name: nikto
+description: Scasn web servers for known vulnerabilities
+os: Linux
+ptf_module: modules/vulnerability-analysis/nikto
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "nikto -host {IPV4} -p {INT}"
+    - input: ["target IPv4 address","port number"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Specify a Test":
+    - type: ["bash","standalone"]
+    - text: "nikto -Tuning {STRMENU} -host {IPV4}"
+    - input: [{"test type":["0","1","2","3","4","5","6","7","8","9","a","b","c","x"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

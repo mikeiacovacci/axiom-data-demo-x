@@ -1,0 +1,92 @@
+---
+name: tcpdump
+description: Dumps traffic on a network
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Capture on All Interfaces":
+    - type: ["bash","standalone"]
+    - text: "tcpdump -i any"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture on a Specific Interface":
+    - type: ["bash","standalone"]
+    - text: "tcpdump -i {STR}"
+    - input: ["interface name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Bidirectional Traffic for a Specific IP":
+    - type: ["bash","standalone"]
+    - text: "tcpdump host {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Traffic Transmitted to a Specific IP":
+    - type: ["bash","standalone"]
+    - text: "tcpdump dst {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Traffic Transmitted from a Specific IP":
+    - type: ["bash","standalone"]
+    - text: "tcpdump src {IPV4}"
+    - input: ["target IPV4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Traffic Transmitted to a Specific Port":
+    - type: ["bash","standalone"]
+    - text: "tcpdump port {INT}"
+    - input: ["target port number"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Traffic Transmitted from a Specific Port":
+    - type: ["bash","standalone"]
+    - text: "tcpdump src port {INT}"
+    - input: ["target port number"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Traffic Transmitted to a Port Range":
+    - type: ["bash","standalone"]
+    - text: "tcpdump portrange {INTRANGE}"
+    - input: ["target port range"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture Specific Protocol Traffic":
+    - type: ["bash","standalone"]
+    - text: "tcpdump {STR}"
+    - input: ["target protocol name"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Read a Capture File":
+    - type: ["bash","standalone"]
+    - text: "tcpdump -r {FILE}"
+    - input: ["input capture file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Find Text in a Capture":
+    - type: ["bash","autonomous"]
+    - text: "tcpdump -vvAls0 | grep '{STR}'"
+    - input: ["search term"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Capture and Display Transmitted Cleartext Passwords":
+    - type: ["bash","autonomous"]
+    - text: "tcpdump port http or port ftp or port smtp or port imap or port pop3 or port telnet -lA | egrep -i -B5 'pass=|pwd=|log=|login=|user=|username=|pw=|passw=|passwd=|password=|pass:|user:|username:|login:|pass |user'"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

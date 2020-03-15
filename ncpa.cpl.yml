@@ -1,0 +1,15 @@
+---
+name: ncpa.cpl
+description: Windows Network Connections (via Control Panel)
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch Control Panel (Network Connections)":
+    - type: ["cmd","standalone"]
+    - text: "ncpa.cpl"
+    - input: null
+    - output: null
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

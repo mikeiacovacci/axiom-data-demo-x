@@ -1,0 +1,43 @@
+---
+name: netdiscover
+description: An active/passive ARP reconnaissance tool
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "netdiscover -r {IPV4CIDR}"
+    - input: ["target network range, IPv4 CIDR"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Fast Scan":
+    - type: ["bash","standalone"]
+    - text: "netdiscover -fr {IPV4CIDR}"
+    - input: ["target network range, IPv4 CIDR"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Passive Scan":
+    - type: ["bash","standalone"]
+    - text: "netdiscover -p"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a List of MAC Addresses and Hostnames":
+    - type: ["bash","standalone"]
+    - text: "netdiscover -m {FILE}"
+    - input: ["target MAC address/hostname list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan a List of Network Ranges":
+    - type: ["bash","standalone"]
+    - text: "netdiscover -l {FILE}"
+    - input: ["target network range list file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

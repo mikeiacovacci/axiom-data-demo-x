@@ -1,0 +1,15 @@
+---
+name: arp
+description: Manipulates the system ARP cache
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Show ARP Table":
+    - type: ["bash","standalone"]
+    - text: "arp -an"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

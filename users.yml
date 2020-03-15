@@ -1,0 +1,15 @@
+---
+name: users
+description: Print the user names of users currently logged in
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Logged On Users":
+    - type: ["bash","standalone"]
+    - text: "users"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

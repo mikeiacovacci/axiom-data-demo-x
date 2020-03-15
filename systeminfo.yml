@@ -1,0 +1,29 @@
+---
+name: systeminfo
+description: Displays OS configuration information for a local or remote machine, including service pack levels
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Show System Information":
+    - type: ["cmd","standalone"]
+    - text: "systeminfo"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check Local OS Version":
+    - type: ["cmd","autonomous"]
+    - text: "systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Check Remote Machine's OS Version":
+    - type: ["cmd","autonomous"]
+    - text: "systeminfo /s {IPV4} | findstr /B /C:\"OS Name\" /C:\"OS Version\""
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

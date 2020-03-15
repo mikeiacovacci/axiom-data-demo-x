@@ -1,0 +1,15 @@
+---
+name: whoami
+description: Get username, group, security identifiers (SID), claims, privileges, logon ID for current local user
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Current Username":
+    - type: ["cmd","standalone"]
+    - text: "whoami"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

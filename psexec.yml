@@ -1,0 +1,35 @@
+---
+name: PsExec
+description: Sysinternals tool to execute programs on a remote Windows system
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Launch Interactive Command Prompt on Remote Machine":
+    - type: ["cmd","standalone"]
+    - text: "psexec \\\\{IPV4} cmd -u {STR} -p \"{STR}\""
+    - input: ["target IPv4 address","target username","target user's password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Execute Existing Program on Remote Machine":
+    - type: ["cmd","standalone"]
+    - text: "psexec \\\\{IPV4} \"{FULLPATH}\" -u {STR} -p \"{STR}\""
+    - input: ["target IPv4 address","path to remote machine's program","target username","target user's password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Execute a Command on a Remote Machine":
+    - type: ["cmd","standalone"]
+    - text: "psexec \\\\{IPV4} -s cmd {STR} -u {STR} -p \"{STR}\""
+    - input: ["target IPv4 address","command and arguments","target username","target user's password"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Copy a File from a Server to a Remote Machine":
+    - type: ["cmd","standalone"]
+    - text: "psexec \\\\{IPV4} -s cmd /c copy \\\\{IPV4}\\{STR} {FULLPATH}"
+    - input: ["target IPv4 address","server IPv4 address","share name and path to file","target download path"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+...

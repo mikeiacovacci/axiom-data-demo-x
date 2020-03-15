@@ -1,0 +1,15 @@
+---
+name: last
+description: Shows a listing of last logged in users
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Previous Logins":
+    - type: ["bash","standalone"]
+    - text: "last"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

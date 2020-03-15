@@ -1,0 +1,29 @@
+---
+name: dirb
+description: Web Content Scanner
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "dirb {WEBURL}"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan for a File Type by Entension":
+    - type: ["bash","standalone"]
+    - text: "dirb {WEBURL} -X {STR}"
+    - input: ["target URL","file extension"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with a Wordlist":
+    - type: ["bash","standalone"]
+    - text: "dirb {WEBURL} {FILE}"
+    - input: ["target URL","wordlist file"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

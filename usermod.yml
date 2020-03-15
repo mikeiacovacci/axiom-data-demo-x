@@ -1,0 +1,22 @@
+---
+name: usermod
+description: Modifies a user account
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Add a User to a Group":
+    - type: ["bash","standalone"]
+    - text: "usermod -a -G {STR} {STR}"
+    - input: ["group name","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Change a User's Primary Group":
+    - type: ["bash","standalone"]
+    - text: "usermod -g {STR} {STR}"
+    - input: ["group name","username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

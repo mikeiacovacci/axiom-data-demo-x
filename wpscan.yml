@@ -1,0 +1,57 @@
+---
+name: wpscan
+description: WordPress Security Scanner by the WPScan Team
+os: Linux
+ptf_module: modules/vulnerability-analysis/wpscan
+---
+commands:
+  - "Non-intrusive Scan":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL}"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Installed Plugins":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --enumerate p"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Vulnerable Installed Plugins":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --enumerate vp"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Installed Themes":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --enumerate t"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Vulnerable Installed Themes":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --enumerate vt"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Users":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --enumerate u"
+    - input: ["target URL"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Wordlist Password Attack Against Specified User":
+    - type: ["bash","standalone"]
+    - text: "wpscan --url {WEBURL} --wordlist {FILE} --username {STR}"
+    - input: ["target URL","wordlist file","target username"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

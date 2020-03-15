@@ -1,0 +1,15 @@
+---
+name: ssh
+description: Secure Shell for logging into remote machines and executing commands
+os: Linux
+ptf_module: null
+---
+commands:
+  - "SSH Port Forward":
+    - type: ["bash","standalone"]
+    - text: "ssh {STR}@{IPV4} -L {INT}:{IPV4}:{INT}"
+    - input: ["forwarding host username","forwarding host IPv4 address","local listening port","target IPv4 address","target port number"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

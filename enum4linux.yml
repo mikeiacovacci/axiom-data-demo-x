@@ -1,0 +1,50 @@
+---
+name: enum4linux
+description: A tool for enumerating information from Windows and Samba system
+os: Linux
+ptf_module: modules/intelligence-gathering/enum4linux
+---
+commands:
+  - "Simple Enumeration":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -a {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate a List of Users":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -U {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate a List of Groups and Users":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -G {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Shares":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -S {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Enumerate Password Policy Info":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -P {IPV4}"
+    - input: ["target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Utilize Credentials for a Scan":
+    - type: ["bash","standalone"]
+    - text: "enum4linux -u {STR} -p {STR} -a {IPV4}"
+    - input: ["username","password","target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

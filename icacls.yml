@@ -1,0 +1,15 @@
+---
+name: icacls
+description: Displays/modifies DACLs on specified files, and applies stored DACLs to files in specified directories
+os: Windows
+ptf_module: null
+---
+commands:
+  - "Locate World-Writable Files":
+    - type: ["powershell","autonomous"]
+    - text: "icacls 'c:\\*' /T /C | Select-String -pattern \"Everyone(CI)(F)\""
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

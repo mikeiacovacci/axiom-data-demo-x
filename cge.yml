@@ -1,0 +1,15 @@
+---
+name: Cisco Global Exploiter (CGE)
+description: An advanced, simple and fast Cisco security testing tool
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "cge.pl {IPV4} {INTMENU}"
+    - input: ["target IPv4 address",{"vulnerability number":[1,2,3,4,5,6,7,8,9,10,11,12,13,14]}]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

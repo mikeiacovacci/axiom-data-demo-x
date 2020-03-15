@@ -1,0 +1,71 @@
+---
+name: snmpwalk
+description: Retrieve a subtree of management values using SNMP GETNEXT requests
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Basic Scan":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4}"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan with Specified MIB Value":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} {STR}"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address","MIB value"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan System Processes":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.25.1.6.0"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Running Programs":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.25.4.2.1.2"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Processes Path":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.25.4.2.1.4"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Storage Units":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.25.2.3.1.4"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan Software Name":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.25.6.3.1.2"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan User Accounts":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.77.1.2.25"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Scan local TCP Ports":
+    - type: ["bash","standalone"]
+    - text: "snmpwalk -c {STR} -v{STRMENU} {IPV4} 1.3.6.1.2.1.6.13.1.3"
+    - input: ["SNMP community string",{"SNMP version":["1","2c","3"]},"target IPv4 address"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

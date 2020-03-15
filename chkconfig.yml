@@ -1,0 +1,15 @@
+---
+name: chkconfig
+description: Updates and queries runlevel information for system services (RHEL, CentOS, and OEL systems)
+os: Linux
+ptf_module: null
+---
+commands:
+  - "List Auto-start Services":
+    - type: ["bash","standalone"]
+    - text: "chkconfig --list"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

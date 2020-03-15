@@ -1,0 +1,24 @@
+---
+name: proxychains
+description: Forces any tcp connection made by any given tcp client to follow through proxy (or proxy chain)
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Setup SOCKS4 Proxy to Remote Machine via SSH":
+    - type: ["bash","autonomous"]
+    - text:
+      - "ssh -D 127.0.0.1:{INT} -p {INT} {STR}@{IPV4}"
+      - "echo \"socks4 127.0.0.1 {INT}\" >> /etc/proxychains.conf"
+    - input: ["local proxy listening TCP port","remote ssh port","remote machine username","remote machine IPv4 address","local proxy listening TCP port (repeat)"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Proxify a Program":
+    - type: ["bash","autonomous"]
+    - text: "proxychains {STR}"
+    - input: ["command (with arguments) to proxify"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

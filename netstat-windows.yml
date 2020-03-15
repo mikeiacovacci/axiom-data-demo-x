@@ -1,0 +1,36 @@
+---
+name: netstat
+description: Displays protocol statistics and current TCP/IP network connections
+os: Windows
+ptf_module: null
+---
+commands:
+  - "View Network Configuration":
+    - type: ["cmd","standalone"]
+    - text: "netstat -nr"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Network Connections with Associated PIDs":
+    - type: ["cmd","standalone"]
+    - text: "netstat -nao"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Network Connections with Associated Executables":
+    - type: ["cmd","standalone"]
+    - text: "netstat -vb"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "View Services":
+    - type: ["cmd","standalone"]
+    - text: "netstat"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

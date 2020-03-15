@@ -1,0 +1,29 @@
+---
+name: searchsploit
+description: Searches through exploits and shellcodes using one or more terms from Exploit-DB
+os: Linux
+ptf_module: modules/exploitation/exploit-db
+---
+commands:
+  - "Find Local Windows Exploits":
+    - type: ["bash","standalone"]
+    - text: "searchsploit windows/local"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Find Local Linux Exploits":
+    - type: ["bash","standalone"]
+    - text: "searchsploit linux/local"
+    - input: null
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Case-Sensitive Exploit Search":
+    - type: ["bash","standalone"]
+    - text: "searchsploit -c {STR}"
+    - input: ["case-sensitive search terms"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...

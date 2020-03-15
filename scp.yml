@@ -1,0 +1,22 @@
+---
+name: scp
+description: Uses SSH to copy files between hosts on a network
+os: Linux
+ptf_module: null
+---
+commands:
+  - "Upload Files to Remote Host":
+    - type: ["bash","standalone"]
+    - text: "scp {FILE} {STR}@{IPV4}:{FULLPATH}"
+    - input: ["local file to upload","remote host username","remote host IPv4 address","full file destination path"]
+    - output: ["STDOUT"]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+  - "Download Files from Remote Host":
+    - type: ["bash","standalone"]
+    - text: "scp {STR}@{IPV4}:{FULLPATH} {FILE}"
+    - input: ["remote host username","remote host IPv4 address","full remote file path","local output file"]
+    - output: ["STDOUT",{"FILE":{"input":4}}]
+    - note: "https://github.com/mikeiacovacci/axiom-data-demo-x"
+
+...
